@@ -32,7 +32,7 @@ goldAnswerColumn=0
 # Column 2 contains our textual features, already tokenized.
 displayedColumn=-1
 1.useSplitWords=true
-1.splitWordsRegexp=\\s
+1.splitWordsRegexp=\\,
 1.useNGrams=true
 1.usePrefixSuffixNGrams=true
 #
