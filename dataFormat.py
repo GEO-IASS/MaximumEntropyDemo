@@ -62,8 +62,16 @@ def formatFileType2():
 def splitData(train, test):
     with open(FORMAT_DIR, "r") as f:
         data = f.read().split('\n')
-    train_data = data[:train]
-    test_data = data[test:]
+
+    countData = len(data)
+    print("countData", countData)
+    itemTrainNum = round((train * countData)/100)
+    print("itemTrainNum", itemTrainNum)
+    itemTestNum = countData - itemTrainNum
+    print("itemTestNum", itemTestNum)
+
+    train_data = data[:itemTrainNum]
+    test_data = data[itemTrainNum:]
     with open(TRAIN_DIR, 'w') as f:
         for s in train_data:
             f.write((s + u'\n'))
@@ -88,7 +96,7 @@ def main():
         elif oper == 1:
             formatFile(False)
         elif oper == 2:
-            exit()
+            splitData(80,20)
 
 if __name__ == "__main__":
     main()
