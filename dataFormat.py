@@ -72,13 +72,21 @@ def splitData(train, test):
 
     train_data = data[:itemTrainNum]
     test_data = data[itemTrainNum:]
+
+    testContent = ''
+    trainContent = ''
+
     with open(TRAIN_DIR, 'w') as f:
         for s in train_data:
-            f.write((s + u'\n'))
+            trainContent += s + u'\n'
+        trainContent = trainContent.strip()
+        f.write(trainContent)
 
     with open(TEST_DIR, 'w') as f:
         for s in test_data:
-            f.write((s + u'\n'))
+            testContent += s + u'\n'
+        testContent = testContent.strip()
+        f.write(testContent)
 
 def main():
     oper = -1
