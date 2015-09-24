@@ -16,6 +16,8 @@ SVM_TRAIN_DIR = 'data/svm/svm_train'
 SVM_TEST_DIR = 'data/svm/svm_test'
 SVM_PART_DIR = 'data/svm/svm_part'
 SVM_MERGE_DIR = 'data/svm/svm_merge'
+SVM_MALE_KEY = 1
+SVM_FEMALE_KEY = 2
 
 def formatFile(type):
     if type:
@@ -76,7 +78,12 @@ def formatFileType3():
         lines = f.readlines()
         for line in lines:
             test_list = line.split( )
-            content += test_list[0] + " "
+            key = 1
+            if test_list[0] == 'male':
+                key = SVM_MALE_KEY
+            else:
+                key = SVM_FEMALE_KEY
+            content += str(key) + " "
             textCount = 1
             for word in test_list:
                 if word != test_list[0]:
