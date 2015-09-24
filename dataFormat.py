@@ -2,12 +2,20 @@ import random
 import re
 import os
 
+#Maxent
 MAXENT_DIR = 'data/maxent.txt'
-FORMAT_DIR = 'format_data/maxent_formated'
-TRAIN_DIR = 'data/maxent_train'
-TEST_DIR = 'data/maxent_test'
-PART_DIR = 'data/maxent_part'
-MERGE_DIR = 'data/maxent_merge'
+MAXENT_FORMAT_DIR = 'data/maxent/maxent_formated'
+MAXENT_TRAIN_DIR = 'data/maxent/maxent_train'
+MAXENT_TEST_DIR = 'data/maxent/maxent_test'
+MAXENT_PART_DIR = 'data/maxent/maxent_part'
+MAXENT_MERGE_DIR = 'data/maxent/maxent_merge'
+#SVM
+SVM_DIR = 'data/svm.txt'
+SVM_FORMAT_DIR = 'data/svm/svm_formated'
+SVM_TRAIN_DIR = 'data/svm/svm_train'
+SVM_TEST_DIR = 'data/svm/svm_test'
+SVM_PART_DIR = 'data/svm/svm_part'
+SVM_MERGE_DIR = 'data/svm/svm_merge'
 
 def formatFile(type):
     if type:
@@ -31,10 +39,10 @@ def formatFileType1():
             content += "\n"
     print(content)
 
-    if not os.path.isdir('format_data'):
-        os.makedirs('format_data')
+    if not os.path.isdir('data/maxent'):
+        os.makedirs('data/maxent')
 
-    with open(FORMAT_DIR, "w") as file:
+    with open(MAXENT_FORMAT_DIR, "w") as file:
         file.write(content)
     file.close()
     print("Format Text Completed!!!")
@@ -53,16 +61,41 @@ def formatFileType2():
                     content += test_list[0] + "\t" + word + "\n"
     print(content)
 
-    if not os.path.isdir('format_data'):
-        os.makedirs('format_data')
+    if not os.path.isdir('data/maxent'):
+        os.makedirs('data/maxent')
 
-    with open(FORMAT_DIR, "w") as file:
+    with open(MAXENT_FORMAT_DIR, "w") as file:
+        file.write(content)
+    file.close()
+    print("Format Text Completed!!!")
+
+def formatFileType3():
+    #Format data for SVM
+    content = ''
+    with open(SVM_DIR, "r") as f:
+        lines = f.readlines()
+        for line in lines:
+            test_list = line.split( )
+            content += test_list[0] + " "
+            textCount = 1
+            for word in test_list:
+                if word != test_list[0]:
+                    content += str(textCount) + ": " + word + ' '
+                    textCount += 1
+            content += "\n"
+            textCount = 1
+    print(content)
+
+    if not os.path.isdir('data/svm'):
+        os.makedirs('data/svm')
+
+    with open(SVM_FORMAT_DIR, "w") as file:
         file.write(content)
     file.close()
     print("Format Text Completed!!!")
 
 def splitDataPercent(train, test):
-    with open(FORMAT_DIR, "r") as f:
+    with open(MAXENT_FORMAT_DIR, "r") as f:
         data = f.read().split('\n')
 
     random.shuffle(data)
@@ -79,14 +112,14 @@ def splitDataPercent(train, test):
     testContent = ''
     trainContent = ''
 
-    with open(TRAIN_DIR, 'w') as f:
+    with open(MAXENT_TRAIN_DIR, 'w') as f:
         for s in train_data:
             if s.strip():
                 trainContent += s + u'\n'
         trainContent = trainContent.strip()
         f.write(trainContent)
 
-    with open(TEST_DIR, 'w') as f:
+    with open(MAXENT_TEST_DIR, 'w') as f:
         for s in test_data:
             if s.strip():
                 testContent += s + u'\n'
@@ -101,7 +134,7 @@ def split_list(alist, wanted_parts):
 def saveDataPartFile(part_list ,partNum):
     print("Part Count", len(part_list))
     content = ''
-    file_dir = PART_DIR + str(partNum)
+    file_dir = MAXENT_PART_DIR + str(partNum)
     with open(file_dir, 'w') as f:
         for s in part_list:
             if s.strip():
@@ -110,7 +143,7 @@ def saveDataPartFile(part_list ,partNum):
         f.write(content)
 
 def splitDataPartNum(num):
-    with open(FORMAT_DIR, "r") as f:
+    with open(MAXENT_FORMAT_DIR, "r") as f:
         data = f.read().split('\n')
     random.shuffle(data)
     countData = len(data)
@@ -124,13 +157,13 @@ def mergeList(testNum, rangeNum):
     for x in range(0, rangeNum):
         if x != testNum:
             print("MergeCount", str(x) + " | " + str(testNum))
-            file_dir = PART_DIR + str(x)
+            file_dir = MAXENT_PART_DIR + str(x)
             with open(file_dir, "r") as f:
                 data += f.read().split('\n')
     print("MergeCount", len(data))
 
     content = ''
-    file_dir = MERGE_DIR + str(testNum)
+    file_dir = MAXENT_MERGE_DIR + str(testNum)
     with open(file_dir, 'w') as f:
         for s in data:
             if s.strip():
@@ -143,10 +176,11 @@ def main():
     while int(oper) != 0:
         print('**************************************')
         print('Choose one of the following: ')
-        print('1 - Format Data')
+        print('1 - Format Data Maxent')
         print('2 - Split Data for Basic Task')
         print('3 - Split Data for Intermediate & Advanced Task')
         print('4 - Merge Data for Intermediate & Advanced Task')
+        print('5 - Format Data SVM')
         print('0 - Exit')
         print('**************************************')
         oper = int(input("Enter your options: "))
@@ -162,6 +196,8 @@ def main():
         elif oper == 4:
             for x in range(0, 5):
                 mergeList(x,5)
+        elif oper == 5:
+            formatFileType3()
 
 
 if __name__ == "__main__":
