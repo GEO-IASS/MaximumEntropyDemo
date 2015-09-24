@@ -52,6 +52,6 @@ QNsize=15
 tolerance=1e-4
 # Output a complete representation of the model to a file:
 #
-#printClassifier=AllWeights
-#printTo=$CLASSIFIERFILE
+printClassifier=AllWeights
+printTo=./data/maxent_result
 #

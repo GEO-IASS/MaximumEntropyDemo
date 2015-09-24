@@ -6,6 +6,8 @@ MAXENT_DIR = 'data/maxent.txt'
 FORMAT_DIR = 'format_data/maxent_formated'
 TRAIN_DIR = 'data/maxent_train'
 TEST_DIR = 'data/maxent_test'
+PART_DIR = 'data/maxent_part'
+MERGE_DIR = 'data/maxent_merge'
 
 def formatFile(type):
     if type:
@@ -59,10 +61,11 @@ def formatFileType2():
     file.close()
     print("Format Text Completed!!!")
 
-def splitData(train, test):
+def splitDataPercent(train, test):
     with open(FORMAT_DIR, "r") as f:
         data = f.read().split('\n')
 
+    random.shuffle(data)
     countData = len(data)
     print("countData", countData)
     itemTrainNum = round((train * countData)/100)
@@ -78,15 +81,62 @@ def splitData(train, test):
 
     with open(TRAIN_DIR, 'w') as f:
         for s in train_data:
-            trainContent += s + u'\n'
+            if s.strip():
+                trainContent += s + u'\n'
         trainContent = trainContent.strip()
         f.write(trainContent)
 
     with open(TEST_DIR, 'w') as f:
         for s in test_data:
-            testContent += s + u'\n'
+            if s.strip():
+                testContent += s + u'\n'
         testContent = testContent.strip()
         f.write(testContent)
+
+def split_list(alist, wanted_parts):
+    length = len(alist)
+    return [ alist[ i * length // wanted_parts: (i + 1) * length // wanted_parts]
+             for i in range(wanted_parts) ]
+
+def saveDataPartFile(part_list ,partNum):
+    print("Part Count", len(part_list))
+    content = ''
+    file_dir = PART_DIR + str(partNum)
+    with open(file_dir, 'w') as f:
+        for s in part_list:
+            if s.strip():
+                content += s + u'\n'
+        content = content.strip()
+        f.write(content)
+
+def splitDataPartNum(num):
+    with open(FORMAT_DIR, "r") as f:
+        data = f.read().split('\n')
+    random.shuffle(data)
+    countData = len(data)
+    print("countData", countData)
+
+    for x in range(0, num):
+        saveDataPartFile(split_list(data, num)[x], x)
+
+def mergeList(testNum, rangeNum):
+    data = []
+    for x in range(0, rangeNum):
+        if x != testNum:
+            print("MergeCount", str(x) + " | " + str(testNum))
+            file_dir = PART_DIR + str(x)
+            with open(file_dir, "r") as f:
+                data += f.read().split('\n')
+    print("MergeCount", len(data))
+
+    content = ''
+    file_dir = MERGE_DIR + str(testNum)
+    with open(file_dir, 'w') as f:
+        for s in data:
+            if s.strip():
+                content += s + u'\n'
+        content = content.strip()
+        f.write(content)
 
 def main():
     oper = -1
@@ -94,7 +144,9 @@ def main():
         print('**************************************')
         print('Choose one of the following: ')
         print('1 - Format Data')
-        print('2 - Split Data')
+        print('2 - Split Data for Basic Task')
+        print('3 - Split Data for Intermediate & Advanced Task')
+        print('4 - Merge Data for Intermediate & Advanced Task')
         print('0 - Exit')
         print('**************************************')
         oper = int(input("Enter your options: "))
@@ -102,9 +154,15 @@ def main():
         if oper == 0:
             exit()
         elif oper == 1:
-            formatFile(False)
+            formatFile(True)
         elif oper == 2:
-            splitData(80,20)
+            splitDataPercent(80,20)
+        elif oper == 3:
+            splitDataPartNum(5)
+        elif oper == 4:
+            for x in range(0, 5):
+                mergeList(x,5)
+
 
 if __name__ == "__main__":
     main()
