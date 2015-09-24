@@ -80,7 +80,7 @@ def formatFileType3():
             textCount = 1
             for word in test_list:
                 if word != test_list[0]:
-                    content += str(textCount) + ": " + word + ' '
+                    content += str(textCount) + ":" + word + ' '
                     textCount += 1
             content += "\n"
             textCount = 1
