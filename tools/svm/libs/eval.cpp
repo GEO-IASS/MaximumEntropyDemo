@@ -173,22 +173,25 @@ double bac(const dvec_t& dec_values, const ivec_t& ty){
 	double neg_rec    = ((double)tn/(double)(tn + fp));
 	double neg_f1     = (2 * neg_prec * neg_rec) / (neg_prec + neg_rec);
 
-	printf("TP = %d\n", tp );
-	printf("FN = %d\n", fn );
-	printf("FP = %d\n", fp );
-	printf("TN = %d\n", tn );
-
-	printf("Positive (+1) class:\n");
+	printf("Positive Male (+1) class:\n");
+	printf("         TP = %d\n", tp );
+	printf("         FN = %d\n", fn );
+	printf("         FP = %d\n", fp );
+	printf("         TN = %d\n", tn );
 	printf("  precision = %g\n", pos_prec );
 	printf("     recall = %g\n", pos_rec );
 	printf("   F1 value = %g\n\n", pos_f1 );
 
-	printf("Negative (-1) class:\n");
+	printf("Negative Female (-1) class:\n");
+	printf("         TP = %d\n", tn );
+	printf("         FN = %d\n", fp );
+	printf("         FP = %d\n", fn );
+	printf("         TN = %d\n", tp );
 	printf("  precision = %g\n", neg_prec );
 	printf("     recall = %g\n", neg_rec );
 	printf("   F1 value = %g\n\n", neg_f1 );
 
-	printf("BAC = %g\n", bac);
+	// printf("BAC = %g\n", bac);
 
 	return bac;
 }
@@ -418,10 +421,7 @@ void binary_class_predict(FILE *input, FILE *output){
 
 	// validation_function(dec_values, true_labels);
 	accuracy(dec_values, true_labels);
-	precision(dec_values, true_labels);
-	recall(dec_values, true_labels);
 	bac(dec_values, true_labels);
-	fscore(dec_values, true_labels);
 
 	free(labels);
 	free(x);

@@ -1,0 +1,113 @@
+Intermediate task: Cross validation
+
+Run 1 (Test data is part0):
+Reading dataset from ./data/maxent_merge0 ... done [1.7s, 801 items].
+numDatums: 801
+numDatumsPerLabel: {female=210.0, male=591.0}
+numLabels: 2 [female, male]
+numFeatures (Phi(X) types): 20147 [CLASS, 1-SW-nhồi_nhét, 1-SW-sao_việt, 1-SW-hành_khách, 1-SW-giàu, ...]
+
+199 examples in test set
+Cls female: TP=20 FN=17 FP=14 TN=148; Acc 0.844 P 0.588 R 0.541 F1 0.563
+Cls male: TP=148 FN=14 FP=17 TN=20; Acc 0.844 P 0.897 R 0.914 F1 0.905
+Accuracy/micro-averaged F1: 0.84422
+Macro-averaged F1: 0.73429
+
+Run 2 (Test data is part1):
+Reading dataset from ./data/maxent_merge1 ... done [1.5s, 800 items].
+numDatums: 800
+numDatumsPerLabel: {female=197.0, male=603.0}
+numLabels: 2 [male, female]
+numFeatures (Phi(X) types): 20255 [CLASS, 1-SW-chanh, 1-SW-hổ_mang, 1-SW-thẳng, 1-SW-sao_việt, ...]
+
+200 examples in test set
+Cls male: TP=138 FN=12 FP=28 TN=22; Acc 0.800 P 0.831 R 0.920 F1 0.873
+Cls female: TP=22 FN=28 FP=12 TN=138; Acc 0.800 P 0.647 R 0.440 F1 0.524
+Accuracy/micro-averaged F1: 0.80000
+Macro-averaged F1: 0.69861
+
+Run 3 (Test data is part2):
+Reading dataset from ./data/maxent_merge2 ... done [1.6s, 800 items].
+numDatums: 800
+numDatumsPerLabel: {female=196.0, male=604.0}
+numLabels: 2 [male, female]
+numFeatures (Phi(X) types): 20375 [CLASS, 1-SW-chanh, 1-SW-hổ_mang, 1-SW-thẳng, 1-SW-sao_việt, ...]
+
+200 examples in test set
+Cls male: TP=137 FN=12 FP=19 TN=32; Acc 0.845 P 0.878 R 0.919 F1 0.898
+Cls female: TP=32 FN=19 FP=12 TN=137; Acc 0.845 P 0.727 R 0.627 F1 0.674
+Accuracy/micro-averaged F1: 0.84500
+Macro-averaged F1: 0.78602
+
+Run 4 (Test data is part3):
+Reading dataset from ./data/maxent_merge3 ... done [1.5s, 800 items].
+numDatums: 800
+numDatumsPerLabel: {female=192.0, male=608.0}
+numLabels: 2 [male, female]
+numFeatures (Phi(X) types): 20362 [CLASS, 1-SW-chanh, 1-SW-hổ_mang, 1-SW-thẳng, 1-SW-sao_việt, ...]
+
+200 examples in test set
+Cls male: TP=135 FN=10 FP=26 TN=29; Acc 0.820 P 0.839 R 0.931 F1 0.882
+Cls female: TP=29 FN=26 FP=10 TN=135; Acc 0.820 P 0.744 R 0.527 F1 0.617
+Accuracy/micro-averaged F1: 0.82000
+Macro-averaged F1: 0.74969
+
+Run 5 (Test data is part4):
+Reading dataset from ./data/maxent_merge4 ... done [1.7s, 799 items].
+numDatums: 799
+numDatumsPerLabel: {female=193.0, male=606.0}
+numLabels: 2 [male, female]
+numFeatures (Phi(X) types): 20256 [CLASS, 1-SW-chanh, 1-SW-hổ_mang, 1-SW-thẳng, 1-SW-sao_việt, ...]
+
+201 examples in test set
+Cls male: TP=137 FN=10 FP=23 TN=31; Acc 0.836 P 0.856 R 0.932 F1 0.893
+Cls female: TP=31 FN=23 FP=10 TN=137; Acc 0.836 P 0.756 R 0.574 F1 0.653
+Accuracy/micro-averaged F1: 0.83582
+Macro-averaged F1: 0.77257
+
+-----------------------------------------------
+Record the confusion matrix --> make the final confusion matrix --> Calculate the precision, recall and F1-score for each class from the final confusion matrix
+
+P (Precision) = TP / (TP + FP) (True positives / All predicted positives)
+R (Recall) = TP / (TP + FN) (True positives / All actual positives)
+F1 = 2 * ((P * R) / (P + R))
+
+Result:
+Run 1:
+Cls female: TP=20 FN=17 FP=14 TN=148;
+Cls male: TP=148 FN=14 FP=17 TN=20;
+
+Run 2:
+Cls male: TP=138 FN=12 FP=28 TN=22;
+Cls female: TP=22 FN=28 FP=12 TN=138;
+
+Run 3:
+Cls male: TP=137 FN=12 FP=19 TN=32;
+Cls female: TP=32 FN=19 FP=12 TN=137;
+
+Run 4:
+Cls male: TP=135 FN=10 FP=26 TN=29;
+Cls female: TP=29 FN=26 FP=10 TN=135;
+
+Run 5:
+Cls male: TP=137 FN=10 FP=23 TN=31;
+Cls female: TP=31 FN=23 FP=10 TN=137;
+
+Final Confusion Matrix (Add all 5 confusion matrixes)
+Cls male: TP=695 FN=58 FP=113 TN=134;
+Cls female: TP=134 FN=113 FP=58 TN=695;
+
+Male:
+Precision:  0.8601485148514851
+Recall:  0.9229747675962815
+F1 Score:  0.8904548366431774
+
+Female:
+Precision:  0.6979166666666666
+Recall:  0.5425101214574899
+F1 Score:  0.6104783599088839
+
+---------------------
+Basic Task Result
+Cls male: P 0.877 R 0.883 F1 0.880
+Cls female: P 0.600 R 0.587 F1 0.593

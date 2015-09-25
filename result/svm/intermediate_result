@@ -1,0 +1,164 @@
+Intermediate task: Cross validation
+
+Run 1 (Test data is part0):
+
+python3 ./tools/svm/easy.py ./data/svm/svm_merge0 ./data/svm/svm_part0
+
+Scaling training data...
+Cross validation...
+Best c=32.0, g=0.001953125 CV rate=83.4968
+Training...
+Output model: svm_merge0.model
+Scaling testing data...
+Testing...
+Accuracy = 87.5% (175/200)
+Positive Male (+1) class:
+         TP = 160
+         FN = 6
+         FP = 19
+         TN = 15
+
+Negative Female (-1) class:
+         TP = 15
+         FN = 19
+         FP = 6
+         TN = 160
+
+Run 2 (Test data is part1):
+
+python3 ./tools/svm/easy.py ./data/svm/svm_merge1 ./data/svm/svm_part1
+
+Scaling training data...
+Cross validation...
+Best c=32.0, g=0.001953125 CV rate=83.3344
+Training...
+Output model: svm_merge1.model
+Scaling testing data...
+Testing...
+Accuracy = 87.5% (175/200)
+Positive Male (+1) class:
+         TP = 163
+         FN = 4
+         FP = 21
+         TN = 12
+
+Negative Female (-1) class:
+         TP = 12
+         FN = 21
+         FP = 4
+         TN = 163
+
+Run 3 (Test data is part2):
+
+python3 ./tools/svm/easy.py ./data/svm/svm_merge2 ./data/svm/svm_part2
+
+Scaling training data...
+Cross validation...
+Best c=32.0, g=0.001953125 CV rate=82.9087
+Training...
+Output model: svm_merge2.model
+Scaling testing data...
+Testing...
+Accuracy = 83.5% (167/200)
+Positive Male (+1) class:
+         TP = 155
+         FN = 6
+         FP = 27
+         TN = 12
+
+Negative Female (-1) class:
+         TP = 12
+         FN = 27
+         FP = 6
+         TN = 155
+
+Run 4 (Test data is part3):
+
+python3 ./tools/svm/easy.py ./data/svm/svm_merge3 ./data/svm/svm_part3
+
+Scaling training data...
+Cross validation...
+Best c=512.0, g=0.0001220703125 CV rate=86.4405
+Training...
+Output model: svm_merge3.model
+Scaling testing data...
+Testing...
+Accuracy = 79.5% (159/200)
+Positive Male (+1) class:
+         TP = 154
+         FN = 7
+         FP = 34
+         TN = 5
+
+Negative Female (-1) class:
+         TP = 5
+         FN = 34
+         FP = 7
+         TN = 154
+
+Run 5 (Test data is part4):
+
+python3 ./tools/svm/easy.py ./data/svm/svm_merge4 ./data/svm/svm_part4
+
+Scaling training data...
+Cross validation...
+Best c=32.0, g=0.0078125 CV rate=84.6612
+Training...
+Output model: svm_merge4.model
+Scaling testing data...
+Testing...
+Accuracy = 91% (182/200)
+Positive Male (+1) class:
+         TP = 168
+         FN = 4
+         FP = 14
+         TN = 14
+
+Negative Female (-1) class:
+         TP = 14
+         FN = 14
+         FP = 4
+         TN = 168
+
+-----------------------------------------------
+Record the confusion matrix --> make the final confusion matrix --> Calculate the precision, recall and F1-score for each class from the final confusion matrix
+
+P (Precision) = TP / (TP + FP) (True positives / All predicted positives)
+R (Recall) = TP / (TP + FN) (True positives / All actual positives)
+F1 = 2 * ((P * R) / (P + R))
+
+Result:
+Final Confusion Matrix (Add all 5 confusion matrixes)
+Positive Male (+1) class:
+         TP = 800
+         FN = 27
+         FP = 115
+         TN = 58
+
+Negative Female (-1) class:
+         TP = 58
+         FN = 115
+         FP = 27
+         TN = 800
+
+Male:
+Precision:  0.8743169398907104
+Recall:  0.9673518742442564
+F1 Score:  0.9184845005740528
+
+Female:
+Precision:  0.6823529411764706
+Recall:  0.3352601156069364
+F1 Score:  0.4496124031007752
+
+---------------------
+Basic Task Result
+Positive Male (+1) class:
+  precision = 0.840426
+     recall = 0.975309
+   F1 value = 0.902857
+
+Negative Female (-1) class:
+  precision = 0.636364
+     recall = 0.189189
+   F1 value = 0.291667

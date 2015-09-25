@@ -1,0 +1,119 @@
+Advanced task: Accuracy comparison
+
+Run 1 (Test data is part0):
+Reading dataset from ./data/maxent/maxent_merge0 ... done [1.8s, 800 items].
+numDatums: 800
+numDatumsPerLabel: {female=200.0, male=600.0}
+numLabels: 2 [male, female]
+numFeatures (Phi(X) types): 20331 [CLASS, 1-SW-sao_việt, 1-SW-phác_họa, 1-SW-camera, 1-SW-vắng, ...]
+
+200 examples in test set
+Cls male: TP=137 FN=16 FP=16 TN=31; Acc 0.840 P 0.895 R 0.895 F1 0.895
+Cls female: TP=31 FN=16 FP=16 TN=137; Acc 0.840 P 0.660 R 0.660 F1 0.660
+Accuracy/micro-averaged F1: 0.84000
+Macro-averaged F1: 0.77750
+
+Run 2 (Test data is part1):
+Reading dataset from ./data/maxent/maxent_merge1 ... done [1.7s, 801 items].
+numDatums: 801
+numDatumsPerLabel: {female=202.0, male=599.0}
+numLabels: 2 [male, female]
+numFeatures (Phi(X) types): 20249 [CLASS, 1-SW-hổ_mang, 1-SW-sao_việt, 1-SW-thầy_trò, 1-SW-hành_khách, ...]
+
+199 examples in test set
+Cls male: TP=138 FN=16 FP=19 TN=26; Acc 0.824 P 0.879 R 0.896 F1 0.887
+Cls female: TP=26 FN=19 FP=16 TN=138; Acc 0.824 P 0.619 R 0.578 F1 0.598
+Accuracy/micro-averaged F1: 0.82412
+Macro-averaged F1: 0.74258
+
+Run 3 (Test data is part2):
+Reading dataset from ./data/maxent/maxent_merge2 ... done [1.5s, 800 items].
+numDatums: 800
+numDatumsPerLabel: {female=202.0, male=598.0}
+numLabels: 2 [male, female]
+numFeatures (Phi(X) types): 20436 [CLASS, 1-SW-hổ_mang, 1-SW-sao_việt, 1-SW-thầy_trò, 1-SW-hành_khách, ...]
+
+200 examples in test set
+Cls male: TP=146 FN=9 FP=23 TN=22; Acc 0.840 P 0.864 R 0.942 F1 0.901
+Cls female: TP=22 FN=23 FP=9 TN=146; Acc 0.840 P 0.710 R 0.489 F1 0.579
+Accuracy/micro-averaged F1: 0.84000
+Macro-averaged F1: 0.74009
+
+Run 4 (Test data is part3):
+Reading dataset from ./data/maxent/maxent_merge3 ... done [1.5s, 800 items].
+numDatums: 800
+numDatumsPerLabel: {female=192.0, male=608.0}
+numLabels: 2 [male, female]
+numFeatures (Phi(X) types): 20176 [CLASS, 1-SW-hổ_mang, 1-SW-sao_việt, 1-SW-thầy_trò, 1-SW-hành_khách, ...]
+
+200 examples in test set
+Cls male: TP=131 FN=14 FP=32 TN=23; Acc 0.770 P 0.804 R 0.903 F1 0.851
+Cls female: TP=23 FN=32 FP=14 TN=131; Acc 0.770 P 0.622 R 0.418 F1 0.500
+Accuracy/micro-averaged F1: 0.77000
+Macro-averaged F1: 0.67532
+
+Run 5 (Test data is part4):
+Reading dataset from ./data/maxent/maxent_merge4 ... done [1.5s, 799 items].
+numDatums: 799
+numDatumsPerLabel: {female=192.0, male=607.0}
+numLabels: 2 [male, female]
+numFeatures (Phi(X) types): 20249 [CLASS, 1-SW-hổ_mang, 1-SW-sao_việt, 1-SW-thầy_trò, 1-SW-hành_khách, ...]
+
+201 examples in test set
+Cls male: TP=134 FN=12 FP=20 TN=35; Acc 0.841 P 0.870 R 0.918 F1 0.893
+Cls female: TP=35 FN=20 FP=12 TN=134; Acc 0.841 P 0.745 R 0.636 F1 0.686
+Accuracy/micro-averaged F1: 0.84080
+Macro-averaged F1: 0.78980
+
+-----------------------------------------------
+Calculate the precision and recall for each class every time --> Calculate final score based on the average precision and recall
+
+Result:
+Run 1:
+Cls male: P 0.895 R 0.895 F1 0.895
+Cls female: P 0.660 R 0.660 F1 0.660
+
+Run 2:
+Cls male: P 0.879 R 0.896 F1 0.887
+Cls female: P 0.619 R 0.578 F1 0.598
+
+Run 3:
+Cls male: P 0.864 R 0.942 F1 0.901
+Cls female: P 0.710 R 0.489 F1 0.579
+
+Run 4:
+Cls male: P 0.804 R 0.903 F1 0.851
+Cls female: P 0.622 R 0.418 F1 0.500
+
+Run 5:
+Cls male: P 0.870 R 0.918 F1 0.893
+Cls female: P 0.745 R 0.636 F1 0.686
+
+Final Result (Average of 5 results)
+
+Male:
+Precision:  0.8624
+Recall:  0.9107999999999998
+F1 Score:  0.8854
+
+Female:
+Precision:  0.6712
+Recall:  0.5562
+F1 Score: 0.6045999999999999
+
+---------------------
+Intermediate Task Result
+Male:
+Precision:  0.8601485148514851
+Recall:  0.9229747675962815
+F1 Score:  0.8904548366431774
+
+Female:
+Precision:  0.6979166666666666
+Recall:  0.5425101214574899
+F1 Score:  0.6104783599088839
+
+---------------------
+Basic Task Result
+Cls male: P 0.877 R 0.883 F1 0.880
+Cls female: P 0.600 R 0.587 F1 0.593

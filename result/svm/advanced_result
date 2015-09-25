@@ -1,0 +1,191 @@
+Advanced task: Accuracy comparison
+
+Run 1 (Test data is part0):
+
+python3 ./tools/svm/easy.py ./data/svm/svm_merge0 ./data/svm/svm_part0
+
+Scaling training data...
+Cross validation...
+Best c=8.0, g=0.03125 CV rate=82.968
+Training...
+Output model: svm_merge0.model
+Scaling testing data...
+Testing...
+Accuracy = 92% (184/200)
+Positive Male (+1) class:
+         TP = 164
+         FN = 5
+         FP = 11
+         TN = 20
+  precision = 0.937143
+     recall = 0.970414
+   F1 value = 0.953488
+
+Negative Female (-1) class:
+         TP = 20
+         FN = 11
+         FP = 5
+         TN = 164
+  precision = 0.8
+     recall = 0.645161
+   F1 value = 0.714286
+
+Run 2 (Test data is part1):
+
+python3 ./tools/svm/easy.py ./data/svm/svm_merge1 ./data/svm/svm_part1
+
+Scaling training data...
+Cross validation...
+Best c=512.0, g=3.0517578125e-05 CV rate=83.0717
+Training...
+Output model: svm_merge1.model
+Scaling testing data...
+Testing...
+Accuracy = 80.5% (161/200)
+Positive Male (+1) class:
+         TP = 154
+         FN = 2
+         FP = 37
+         TN = 7
+  precision = 0.806283
+     recall = 0.987179
+   F1 value = 0.887608
+
+Negative Female (-1) class:
+         TP = 7
+         FN = 37
+         FP = 2
+         TN = 154
+  precision = 0.777778
+     recall = 0.159091
+   F1 value = 0.264151
+
+Run 3 (Test data is part2):
+
+python3 ./tools/svm/easy.py ./data/svm/svm_merge2 ./data/svm/svm_part2
+
+Scaling training data...
+Cross validation...
+Best c=128.0, g=0.00048828125 CV rate=85.6833
+Training...
+Output model: svm_merge2.model
+Scaling testing data...
+Testing...
+Accuracy = 84.4221% (168/199)
+Positive Male (+1) class:
+         TP = 158
+         FN = 2
+         FP = 29
+         TN = 10
+  precision = 0.84492
+     recall = 0.9875
+   F1 value = 0.910663
+
+Negative Female (-1) class:
+         TP = 10
+         FN = 29
+         FP = 2
+         TN = 158
+  precision = 0.833333
+     recall = 0.25641
+   F1 value = 0.392157
+
+Run 4 (Test data is part3):
+
+python3 ./tools/svm/easy.py ./data/svm/svm_merge3 ./data/svm/svm_part3
+
+Scaling training data...
+Cross validation...
+Best c=8.0, g=0.001953125 CV rate=83.3814
+Training...
+Output model: svm_merge3.model
+Scaling testing data...
+Testing...
+Accuracy = 86.5% (173/200)
+Positive Male (+1) class:
+         TP = 165
+         FN = 1
+         FP = 26
+         TN = 8
+  precision = 0.863874
+     recall = 0.993976
+   F1 value = 0.92437
+
+Negative Female (-1) class:
+         TP = 8
+         FN = 26
+         FP = 1
+         TN = 165
+  precision = 0.888889
+     recall = 0.235294
+   F1 value = 0.372093
+
+Run 5 (Test data is part4):
+
+python3 ./tools/svm/easy.py ./data/svm/svm_merge4 ./data/svm/svm_part4
+
+Scaling training data...
+Cross validation...
+Best c=8.0, g=0.001953125 CV rate=84.2114
+Training...
+Output model: svm_merge4.model
+Scaling testing data...
+Testing...
+Accuracy = 87.5622% (176/201)
+Positive Male (+1) class:
+         TP = 171
+         FN = 5
+         FP = 20
+         TN = 5
+  precision = 0.895288
+     recall = 0.971591
+   F1 value = 0.93188
+
+Negative Female (-1) class:
+         TP = 5
+         FN = 20
+         FP = 5
+         TN = 171
+  precision = 0.5
+     recall = 0.2
+   F1 value = 0.285714
+
+-----------------------------------------------
+Calculate the precision and recall for each class every time --> Calculate final score based on the average precision and recall
+
+Result:
+Final Result (Average of 5 results)
+
+Male:
+Precision:  0.8695016000000001
+Recall:  0.982132
+F1 Score:  0.9216018
+
+Female:
+Precision:  0.76
+Recall:  0.2991912
+F1 Score:  0.40568020000000005
+
+---------------------
+Intermediate Task Result
+Male:
+Precision:  0.8743169398907104
+Recall:  0.9673518742442564
+F1 Score:  0.9184845005740528
+
+Female:
+Precision:  0.6823529411764706
+Recall:  0.3352601156069364
+F1 Score:  0.4496124031007752
+
+---------------------
+Basic Task Result
+Positive Male (+1) class:
+  precision = 0.840426
+     recall = 0.975309
+   F1 value = 0.902857
+
+Negative Female (-1) class:
+  precision = 0.636364
+     recall = 0.189189
+   F1 value = 0.291667

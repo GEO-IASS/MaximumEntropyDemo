@@ -208,6 +208,27 @@ def mergeList(testNum, rangeNum, isMaxent):
             content = content.strip()
         f.write(content)
 
+def calculatePRF(tp, fn, fp, tn):
+    # P (Precision) = TP / (TP + FP) (True positives / All predicted positives)
+    # R (Recall) = TP / (TP + FN) (True positives / All actual positives)
+    # F1 = 2 * ((P * R) / (P + R))
+
+    p = tp / (tp + fp)
+    r = tp / (tp + fn)
+    f1 = 2 * ((p * r) / (p + r))
+
+    print('Precision: ', str(p))
+    print('Recall: ', str(r))
+    print('F1 Score: ', str(f1))
+
+def calculateAvg(input):
+    data = input.split(' ')
+    sumList = 0
+    for x in data:
+        sumList += float(x)
+    result = sumList / len(data)
+    print("AVG: ", result)
+
 def main():
     oper = -1
     while int(oper) != 0:
@@ -221,6 +242,8 @@ def main():
         print('6 - SVM - Split Data for Basic Task')
         print('7 - SVM - Split Data for Intermediate & Advanced Task')
         print('8 - SVM - Merge Data for Intermediate & Advanced Task')
+        print('9 - Calculate Precision, Recall and F1 score')
+        print('10 - Calculate Average of Result')
         print('0 - Exit')
         print('**************************************')
         oper = int(input("Enter your options: "))
@@ -245,7 +268,16 @@ def main():
         elif oper == 8:
             for x in range(0, 5):
                 mergeList(x,5, False)
-
+        elif oper == 9:
+            #tp, fn, fp, tn
+            tp = int(input("Enter True Positives(TP): "))
+            fn = int(input("Enter False Negatives(FN): "))
+            fp = int(input("Enter False Positives(FP): "))
+            tn = int(input("Enter True Negatives(TN): "))
+            calculatePRF(tp,fn,fp,tn)
+        elif oper == 10:
+            data = input("Enter values: ")
+            calculateAvg(data)
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,12 @@
+Basic task: Hold-out test
+
+numDatums: 800
+numDatumsPerLabel: {female=201.0, male=599.0}
+numLabels: 2 [male, female]
+numFeatures (Phi(X) types): 20263 [CLASS, 1-SW-giày, 1-SW-sao_việt, 1-SW-thầy_trò, 1-SW-hành_khách, ...]
+
+200 examples in test set
+Cls male: TP=136 FN=18 FP=19 TN=27; Acc 0.815 P 0.877 R 0.883 F1 0.880
+Cls female: TP=27 FN=19 FP=18 TN=136; Acc 0.815 P 0.600 R 0.587 F1 0.593
+Accuracy/micro-averaged F1: 0.81500
+Macro-averaged F1: 0.73683

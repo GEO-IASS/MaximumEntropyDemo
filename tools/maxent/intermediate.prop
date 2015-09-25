@@ -3,20 +3,20 @@
 #
 ##### Training and testing source, as tab-separated-values files:
 #
-#trainFile=./data/maxent_merge0
-#testFile=./data/maxent_part0
+#trainFile=./data/maxent/maxent_merge0
+#testFile=./data/maxent/maxent_part0
 #
-#trainFile=./data/maxent_merge1
-#testFile=./data/maxent_part1
+#trainFile=./data/maxent/maxent_merge1
+#testFile=./data/maxent/maxent_part1
 #
-#trainFile=./data/maxent_merge2
-#testFile=./data/maxent_part2
+#trainFile=./data/maxent/maxent_merge2
+#testFile=./data/maxent/maxent_part2
 #
-#trainFile=./data/maxent_merge3
-#testFile=./data/maxent_part3
+#trainFile=./data/maxent/maxent_merge3
+#testFile=./data/maxent/maxent_part3
 #
-trainFile=./data/maxent_merge4
-testFile=./data/maxent_part4
+trainFile=./data/maxent/maxent_merge4
+testFile=./data/maxent/maxent_part4
 
 #
 # Model (useNB=false is MaxEnt; useNB=true is NaiveBayes)
