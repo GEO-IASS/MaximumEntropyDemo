@@ -9,6 +9,7 @@ MAXENT_TRAIN_DIR = 'data/maxent/maxent_train'
 MAXENT_TEST_DIR = 'data/maxent/maxent_test'
 MAXENT_PART_DIR = 'data/maxent/maxent_part'
 MAXENT_MERGE_DIR = 'data/maxent/maxent_merge'
+MAXENT_BALANCE_DIR = 'data/maxent/maxent_balance'
 #SVM
 SVM_DIR = 'data/svm.txt'
 SVM_FORMAT_DIR = 'data/svm/svm_formated'
@@ -16,6 +17,7 @@ SVM_TRAIN_DIR = 'data/svm/svm_train'
 SVM_TEST_DIR = 'data/svm/svm_test'
 SVM_PART_DIR = 'data/svm/svm_part'
 SVM_MERGE_DIR = 'data/svm/svm_merge'
+SVM_BALANCE_DIR = 'data/svm/svm_balance'
 SVM_MALE_KEY = 1
 SVM_FEMALE_KEY = -1
 
@@ -100,6 +102,59 @@ def formatFileType3():
         file.write(content)
     file.close()
     print("Format Text Completed!!!")
+
+def balanceData(isMaxent, part):
+    if isMaxent:
+        formatDir = MAXENT_MERGE_DIR + str(part)
+        balanceDir = MAXENT_BALANCE_DIR + str(part)
+    else:
+        formatDir = SVM_MERGE_DIR + str(part)
+        balanceDir = SVM_BALANCE_DIR + str(part)
+
+    with open(formatDir, "r") as f:
+        data = f.readlines()
+
+    maleList = []
+    femaleList = []
+
+    if isMaxent:
+        for s in data:
+            if s.startswith('male'):
+                maleList.insert(0,s)
+            else:
+                femaleList.insert(0,s)
+    else:
+        for s in data:
+            if s.startswith('1'):
+                maleList.insert(0,s)
+            else:
+                femaleList.insert(0,s)
+
+    balanceCount = 0
+    balanceList = []
+    if len(maleList) >= len(femaleList):
+        balanceCount = len(femaleList)
+        balanceList = random.sample(maleList, balanceCount)
+        balanceList = balanceList + femaleList
+    else:
+        balanceCount = len(maleList)
+        balanceList = random.sample(femaleList, balanceCount)
+        balanceList = balanceList + maleList
+
+    random.shuffle(balanceList)
+
+    trainContent = ''
+    with open(balanceDir, 'w') as f:
+        for s in balanceList:
+            if s.strip():
+                trainContent += s
+        if isMaxent:
+            trainContent = trainContent.strip()
+        f.write(trainContent)
+
+    print("maleList: ", len(maleList))
+    print("femaleList: ", len(femaleList))
+    print("balanceList: ", len(balanceList))
 
 def splitDataPercent(train, test, isMaxent):
     if isMaxent:
@@ -244,6 +299,8 @@ def main():
         print('8 - SVM - Merge Data for Intermediate & Advanced Task')
         print('9 - Calculate Precision, Recall and F1 score')
         print('10 - Calculate Average of Result')
+        print('11 - Balance Data for Maxent')
+        print('12 - Balance Data for SVM')
         print('0 - Exit')
         print('**************************************')
         oper = int(input("Enter your options: "))
@@ -278,6 +335,12 @@ def main():
         elif oper == 10:
             data = input("Enter values: ")
             calculateAvg(data)
+        elif oper == 11:
+            for x in range(0, 5):
+                balanceData(True, x)
+        elif oper == 12:
+            for x in range(0, 5):
+                balanceData(False, x)
 
 if __name__ == "__main__":
     main()

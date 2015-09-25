@@ -1,0 +1,67 @@
+# USAGE
+# java -mx3000m -jar stanford-classifier.jar -prop $THISFILENAME
+#
+##### Training and testing source, as tab-separated-values files:
+#
+#trainFile=./data/maxent/maxent_balance0
+#testFile=./data/maxent/maxent_part0
+
+#trainFile=./data/maxent/maxent_merge0
+#testFile=./data/maxent/maxent_part0
+
+trainFile=./data/maxent/maxent_balance1
+testFile=./data/maxent/maxent_part1
+
+#trainFile=./data/maxent/maxent_merge1
+#testFile=./data/maxent/maxent_part1
+
+#
+# Model (useNB=false is MaxEnt; useNB=true is NaiveBayes)
+useNB=false
+#
+#
+# Printing
+#
+#printClassifier=HighWeight
+#printClassifierParam=200
+##### Features
+#
+# Use the class feature to capture any biases coming
+# from imbalanced class sizes:
+#
+useClassFeature=true
+#
+# The true class labels are given in column 0 (leftmost)
+#
+goldAnswerColumn=0
+#
+# Suppose that column 1 contains something like the frequency
+# of sentiment words overall. We tell the classifier to treat
+# the values as numeric and to log-transform them:
+#
+# Column 2 contains our textual features, already tokenized.
+displayedColumn=-1
+1.useSplitWords=true
+1.splitWordsRegexp=\\,
+1.useNGrams=true
+1.usePrefixSuffixNGrams=true
+#
+# Printing
+#
+# printClassifier=HighWeight
+printClassifierParam=200
+#
+# These are the recommended optimization parameters for MaxEnt;
+# if useNB=true, they are ignored:
+#
+prior=quadratic
+intern=true
+sigma=3.0
+useQN=true
+QNsize=15
+tolerance=1e-4
+# Output a complete representation of the model to a file:
+#
+printClassifier=AllWeights
+printTo=./data/maxent_result
+#

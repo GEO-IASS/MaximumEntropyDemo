@@ -1,0 +1,101 @@
+Expert Task: Balance Data
+
+python3 ./tools/svm/easy.py ./data/svm/svm_merge0 ./data/svm/svm_part0
+
+Train File: svm_merge0
+Test File: svm_part0
+
+Accuracy = 88% (176/200)
+Positive Male (+1) class:
+         TP = 168
+         FN = 6
+         FP = 18
+         TN = 8
+  precision = 0.903226
+     recall = 0.965517
+   F1 value = 0.933333
+
+Negative Female (-1) class:
+         TP = 8
+         FN = 18
+         FP = 6
+         TN = 168
+  precision = 0.571429
+     recall = 0.307692
+   F1 value = 0.4
+
+------------------------
+python3 ./tools/svm/easy.py ./data/svm/svm_balance0 ./data/svm/svm_part0
+
+Train File: svm_balance0
+Test File: svm_part0
+
+Accuracy = 71% (142/200)
+Positive Male (+1) class:
+         TP = 120
+         FN = 54
+         FP = 4
+         TN = 22
+  precision = 0.967742
+     recall = 0.689655
+   F1 value = 0.805369
+
+Negative Female (-1) class:
+         TP = 22
+         FN = 4
+         FP = 54
+         TN = 120
+  precision = 0.289474
+     recall = 0.846154
+   F1 value = 0.431373
+
+
+--------------------------
+   python3 ./tools/svm/easy.py ./data/svm/svm_merge1 ./data/svm/svm_part1
+
+   Train File: svm_merge1
+   Test File: svm_part1
+
+   Accuracy = 84.5% (169/200)
+Positive Male (+1) class:
+         TP = 152
+         FN = 13
+         FP = 18
+         TN = 17
+  precision = 0.894118
+     recall = 0.921212
+   F1 value = 0.907463
+
+Negative Female (-1) class:
+         TP = 17
+         FN = 18
+         FP = 13
+         TN = 152
+  precision = 0.566667
+     recall = 0.485714
+   F1 value = 0.523077
+
+------------------------
+   python3 ./tools/svm/easy.py ./data/svm/svm_balance1 ./data/svm/svm_part1
+
+   Train File: svm_balance1
+   Test File: svm_part1
+
+   Accuracy = 77.5% (155/200)
+Positive Male (+1) class:
+         TP = 128
+         FN = 37
+         FP = 8
+         TN = 27
+  precision = 0.941176
+     recall = 0.775758
+   F1 value = 0.850498
+
+Negative Female (-1) class:
+         TP = 27
+         FN = 8
+         FP = 37
+         TN = 128
+  precision = 0.421875
+     recall = 0.771429
+   F1 value = 0.545455

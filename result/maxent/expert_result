@@ -1,0 +1,39 @@
+Expert task: Balance Data
+
+#trainFile=./data/maxent/maxent_merge0
+#testFile=./data/maxent/maxent_part0
+--------------
+200 examples in test set
+Cls male: TP=147 FN=11 FP=16 TN=26; Acc 0.865 P 0.902 R 0.930 F1 0.916
+Cls female: TP=26 FN=16 FP=11 TN=147; Acc 0.865 P 0.703 R 0.619 F1 0.658
+Accuracy/micro-averaged F1: 0.86500
+Macro-averaged F1: 0.78706
+
+
+trainFile=./data/maxent/maxent_balance0
+testFile=./data/maxent/maxent_part0
+-------------
+200 examples in test set
+Cls male: TP=131 FN=27 FP=7 TN=35; Acc 0.830 P 0.949 R 0.829 F1 0.885
+Cls female: TP=35 FN=7 FP=27 TN=131; Acc 0.830 P 0.565 R 0.833 F1 0.673
+Accuracy/micro-averaged F1: 0.83000
+Macro-averaged F1: 0.77911
+
+
+#trainFile=./data/maxent/maxent_merge1
+#testFile=./data/maxent/maxent_part1
+-------------
+200 examples in test set
+Cls male: TP=142 FN=15 FP=22 TN=21; Acc 0.815 P 0.866 R 0.904 F1 0.885
+Cls female: TP=21 FN=22 FP=15 TN=142; Acc 0.815 P 0.583 R 0.488 F1 0.532
+Accuracy/micro-averaged F1: 0.81500
+Macro-averaged F1: 0.70819
+
+trainFile=./data/maxent/maxent_balance1
+testFile=./data/maxent/maxent_part1
+-------------
+200 examples in test set
+Cls male: TP=131 FN=26 FP=11 TN=32; Acc 0.815 P 0.923 R 0.834 F1 0.876
+Cls female: TP=32 FN=11 FP=26 TN=131; Acc 0.815 P 0.552 R 0.744 F1 0.634
+Accuracy/micro-averaged F1: 0.81500
+Macro-averaged F1: 0.75496
