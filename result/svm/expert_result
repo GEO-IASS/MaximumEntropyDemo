@@ -87,7 +87,7 @@ Positive Male (+1) class:
          FN = 37
          FP = 8
          TN = 27
-  precision = 0.941176
+  precision = 0.941176248
      recall = 0.775758
    F1 value = 0.850498
 

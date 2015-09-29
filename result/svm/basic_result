@@ -30,3 +30,42 @@ Negative Female (-1) class:
   precision = 0.636364
      recall = 0.189189
    F1 value = 0.291667
+
+
+
+   -------------------
+Total:  801
+Male Number:  653
+Female Number:  148
+-------------------
+-------------------
+Total:  200
+Male Number:  174
+Female Number:  26
+-------------------
+
+Scaling training data...
+Cross validation...
+Best c=128.0, g=0.00048828125 CV rate=84.5454
+Training...
+Output model: svm_train.model
+Scaling testing data...
+Testing...
+Accuracy = 89% (178/200)
+Positive Male (+1) class:
+         TP = 167
+         FN = 7
+         FP = 15
+         TN = 11
+  precision = 0.917582
+     recall = 0.95977
+   F1 value = 0.938202
+
+Negative Female (-1) class:
+         TP = 11
+         FN = 15
+         FP = 7
+         TN = 167
+  precision = 0.611111
+     recall = 0.423077
+   F1 value = 0.5

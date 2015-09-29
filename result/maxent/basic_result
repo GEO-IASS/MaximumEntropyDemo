@@ -10,3 +10,23 @@ Cls male: TP=136 FN=18 FP=19 TN=27; Acc 0.815 P 0.877 R 0.883 F1 0.880
 Cls female: TP=27 FN=19 FP=18 TN=136; Acc 0.815 P 0.600 R 0.587 F1 0.593
 Accuracy/micro-averaged F1: 0.81500
 Macro-averaged F1: 0.73683
+
+-------------------
+Total:  801
+Male Number:  606
+Female Number:  195
+-------------------
+-------------------
+Total:  200
+Male Number:  147
+Female Number:  53
+-------------------
+1.673482
+Cls male: TP=142 FN=9 FP=25 TN=24; Acc 0.830
+P 0.850
+R 0.940
+F1 0.893
+Cls female: TP=24 FN=25 FP=9 TN=142; Acc 0.830
+P 0.727
+R 0.490
+F1 0.585

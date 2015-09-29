@@ -156,6 +156,28 @@ def balanceData(isMaxent, part):
     print("femaleList: ", len(femaleList))
     print("balanceList: ", len(balanceList))
 
+def checkData(data ,isMaxent):
+    maleList = []
+    femaleList = []
+    if isMaxent:
+        for s in data:
+            if s.startswith('male'):
+                maleList.insert(0,s)
+            else:
+                femaleList.insert(0,s)
+    else:
+        for s in data:
+            if s.startswith('1'):
+                maleList.insert(0,s)
+            else:
+                femaleList.insert(0,s)
+
+    print("-------------------")
+    print("Total: ", len(data))
+    print("Male Number: ", len(maleList))
+    print("Female Number: ", len(femaleList))
+    print("-------------------")
+
 def splitDataPercent(train, test, isMaxent):
     if isMaxent:
         formatDir = MAXENT_FORMAT_DIR
@@ -179,6 +201,10 @@ def splitDataPercent(train, test, isMaxent):
 
     train_data = data[:itemTrainNum]
     test_data = data[itemTrainNum:]
+
+    checkData(train_data, isMaxent)
+
+    checkData(test_data, isMaxent)
 
     testContent = ''
     trainContent = ''
@@ -211,6 +237,9 @@ def saveDataPartFile(part_list ,partNum, isMaxent):
         partDir = SVM_PART_DIR
 
     print("Part Count", len(part_list))
+
+    checkData(part_list, isMaxent)
+
     content = ''
     file_dir = partDir + str(partNum)
     with open(file_dir, 'w') as f:
@@ -252,6 +281,8 @@ def mergeList(testNum, rangeNum, isMaxent):
             with open(file_dir, "r") as f:
                 data += f.read().split('\n')
     print("MergeCount", len(data))
+
+    checkData(data, isMaxent)
 
     content = ''
     file_dir = mergeDir + str(testNum)
